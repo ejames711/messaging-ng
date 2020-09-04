@@ -1,0 +1,14 @@
+.header {
+    background-color: gray;
+    color: black;
+    text-align: center;
+}
+
+.message-area{
+    height: 200px;
+    background-color: lightgray;
+}
+
+.messages{
+    width: 30%;
+}

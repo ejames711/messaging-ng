@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageDisplayComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }
-
+  addMessage(message:string){
+    alert(message);
+  }
 }

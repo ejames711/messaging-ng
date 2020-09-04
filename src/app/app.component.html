@@ -1,5 +1,3 @@
-<app-banner></app-banner>
-<app-message-display></app-message-display>
-
-
+<app-message-display #appmessagedisplay></app-message-display>
+<app-message-entry (addMSG)="appmessagedisplay.addMessage($event)"></app-message-entry>
 <router-outlet></router-outlet>
