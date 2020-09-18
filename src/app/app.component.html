@@ -1,3 +1,4 @@
-<app-message-display #appmessagedisplay></app-message-display>
-<app-message-entry (addMSG)="appmessagedisplay.addMessage($event)"></app-message-entry>
+<app-message-display [rcvMessage]="messageElement"></app-message-display>
+<app-message-entry
+(messageEvent)="onMessageAdded($event)"></app-message-entry>
 <router-outlet></router-outlet>

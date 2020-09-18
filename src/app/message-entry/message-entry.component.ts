@@ -6,15 +6,17 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./message-entry.component.css']
 })
 export class MessageEntryComponent implements OnInit {
-  @Output() addMSG = new EventEmitter();
+  message: string;
 
-  constructor() { }
+  @Output() messageEvent = new EventEmitter<string>();
+
+  constructor() {}
 
   ngOnInit(): void {
   }
 
   addMessage(){
-    this.addMSG.emit("Hey this works!");
+    this.messageEvent.emit("Hey this is a message!");
   }
 
   deleteMessage(){
