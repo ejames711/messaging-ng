@@ -15,12 +15,16 @@ export class MessageEntryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addMessage(){
-    this.messageEvent.emit("Hey this is a message!");
+  addMessage(msg:string){
+    this.messageEvent.emit(msg);
   }
 
-  deleteMessage(){
-    alert("Delete a message!");
+  clearMessageEntry(msgInput:HTMLInputElement){
+    msgInput.value='';
+  }
+
+  deleteMessage(msgInput:HTMLInputElement){
+    this.clearMessageEntry(msgInput);
   }
 
 }
