@@ -1,0 +1,14 @@
+.message{
+    float: left;
+    width: 50%;
+}
+
+.username{
+    float: left;
+    width: 25%;
+}
+
+.timestamp{
+    float: left;
+    width: 25%;
+}

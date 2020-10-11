@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, ViewChild, Input, ComponentFactory, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, Input, ComponentFactory, ComponentFactoryResolver, ViewContainerRef, ComponentRef
+ } from '@angular/core';
 import { MessageComponent } from '../message/message.component';
-import { MessageDirective } from '../message.directive';
 
 @Component({
   selector: 'app-message-display',
@@ -9,24 +9,24 @@ import { MessageDirective } from '../message.directive';
 })
 export class MessageDisplayComponent implements OnInit, OnDestroy {
   rcvMessage: string;
-  @Input() messageElements: MessageComponent[];
-  currentMsgIndex = -1;
-  @ViewChild(MessageDirective, {static: true}) messagedir: MessageDirective;
+  @ViewChild("messagedir", {read:ViewContainerRef}) container;
+  componentRef: ComponentRef<MessageComponent>; 
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { \
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
   ngOnInit(): void {
-    this.loadMessages();
+  }
+
+  ngOnDestroy(): void {
   }
 
   addMessage($event){
     this.rcvMessage=$event;
-    let message = new MessageComponent($event);
-    this.messageElements.push(message);
-  }
-
-  loadMessages(){
-    this.currentMsgIndex = (this.currentMsgIndex) % this.messageElements.length;
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MessageComponent);
+    this.componentRef = this.container.createComponent(componentFactory);
+    this.componentRef.instance.message = $event;
+    this.componentRef.instance.username = "me";
+    this.componentRef.instance.timestamp ="1234";
   }
 }

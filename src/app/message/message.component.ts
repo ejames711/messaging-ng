@@ -5,18 +5,25 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
+
 export class MessageComponent implements OnInit {
   message: string;
   username: string;
   timestamp: string;
 
-  constructor(message: any) {
-    this.message = message;
-    this.username = "me";
-    this.timestamp = "1234";
-   }
 
   ngOnInit(): void {
   }
 
+set Message(message:string){
+  this.message = message;
+}
+
+set Username(username:string){
+  this.username = username;
+}
+
+set Timestamp(timestamp:string){
+  this.timestamp = timestamp;
+}
 }
